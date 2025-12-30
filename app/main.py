@@ -6,7 +6,11 @@ from fastapi.responses import JSONResponse
 
 from app.config import settings
 from app.core.logging import setup_logging, get_logger
-from app.core.exceptions import AppException
+from app.core.exceptions import (
+    AppException,
+    RestaurantNotFoundError,
+    PayoutNotFoundError,
+)
 
 # Setup logging
 setup_logging(settings.LOG_LEVEL)
@@ -50,9 +54,59 @@ app = FastAPI(
 )
 
 
+@app.exception_handler(RestaurantNotFoundError)
+async def restaurant_not_found_handler(
+    request: Request, exc: RestaurantNotFoundError
+) -> JSONResponse:
+    """Handle restaurant not found errors."""
+    logger.warning(
+        "Restaurant not found",
+        extra={
+            "error_code": exc.code,
+            "path": request.url.path,
+            "details": exc.details,
+        },
+    )
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={
+            "error": {
+                "code": exc.code,
+                "message": exc.message,
+                "details": exc.details,
+            }
+        },
+    )
+
+
+@app.exception_handler(PayoutNotFoundError)
+async def payout_not_found_handler(
+    request: Request, exc: PayoutNotFoundError
+) -> JSONResponse:
+    """Handle payout not found errors."""
+    logger.warning(
+        "Payout not found",
+        extra={
+            "error_code": exc.code,
+            "path": request.url.path,
+            "details": exc.details,
+        },
+    )
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={
+            "error": {
+                "code": exc.code,
+                "message": exc.message,
+                "details": exc.details,
+            }
+        },
+    )
+
+
 @app.exception_handler(AppException)
 async def app_exception_handler(request: Request, exc: AppException) -> JSONResponse:
-    """Handle application-specific exceptions."""
+    """Handle general application-specific exceptions."""
     logger.error(
         "Application error",
         extra={
