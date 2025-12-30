@@ -97,6 +97,7 @@ async def health_check() -> dict:
     }
 
 
-# Import and include routers (will be added later)
-# from app.api.v1.router import api_router
-# app.include_router(api_router, prefix=settings.API_V1_PREFIX)
+# Import and include routers
+from app.api.v1.router import api_router
+
+app.include_router(api_router, prefix=settings.API_V1_PREFIX)
