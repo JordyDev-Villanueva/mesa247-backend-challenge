@@ -59,7 +59,7 @@ class LedgerEntry(BaseModel):
         nullable=False,
     )
 
-    metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(
+    entry_metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(
         JSON,
         nullable=True,
     )

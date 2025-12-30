@@ -55,7 +55,7 @@ class ProcessorEvent(BaseModel):
         default=0,
     )
 
-    metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(
+    event_metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(
         JSON,
         nullable=True,
     )
