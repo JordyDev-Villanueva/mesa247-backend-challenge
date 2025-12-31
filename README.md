@@ -86,7 +86,7 @@ Successfully processed 70 events with **100% success rate** (no duplicates, no f
   </tr>
 </table>
 
-> 💡 **Why Screenshots Matter**: These demonstrate not just code quality, but operational excellence - the ability to deliver working software, not just theoretical solutions.
+> 💡 **Why Screenshots Matter:** These demonstrate not just code quality, but operational excellence - the ability to deliver working software, not just theoretical solutions.
 
 ---
 
@@ -105,7 +105,13 @@ Successfully processed 70 events with **100% success rate** (no duplicates, no f
 git clone https://github.com/JordyDev-Villanueva/mesa247-backend-challenge.git
 cd mesa247-backend-challenge
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Activate virtual environment
+# Linux/Mac:
+source venv/bin/activate
+# Windows:
+venv\Scripts\activate
+
 pip install -r requirements.txt
 ```
 
@@ -372,7 +378,7 @@ CREATE INDEX idx_payouts_restaurant ON payouts(restaurant_id, currency, as_of_da
 
 ## 🔍 SQL Queries
 
-Located in `sql/queries.sql`:
+Located in `sql/queries.sql` - **Challenge requirements fulfilled**:
 
 1. **Q1**: All restaurant balances (aggregation + grouping)
 2. **Q2**: Top 10 restaurants by net revenue (last 7 days, window functions)
