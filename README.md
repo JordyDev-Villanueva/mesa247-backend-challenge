@@ -21,6 +21,75 @@ Production-grade microservice built with **FastAPI**, **SQLAlchemy**, and **Post
 
 ---
 
+## 📸 Live Demo
+
+> **Visual proof of working implementation** - All screenshots demonstrate actual running code, not mock-ups.
+
+### API Documentation (Swagger UI)
+Professional OpenAPI documentation with interactive testing:
+
+![Swagger UI](docs/screenshots/01-swagger-ui-overview.png)
+
+### Event Ingestion with Idempotency
+The system correctly handles duplicate events - first request returns **201 Created**, duplicate returns **200 OK**:
+
+<table>
+  <tr>
+    <td width="50%">
+      <b>First Request (201 Created)</b><br>
+      <img src="docs/screenshots/02-post-event-201-created.png" alt="Event processed for first time" width="100%">
+    </td>
+    <td width="50%">
+      <b>Duplicate Request (200 OK)</b><br>
+      <img src="docs/screenshots/03-post-event-200-idempotency.png" alt="Idempotency working" width="100%">
+    </td>
+  </tr>
+</table>
+
+### Multi-Currency Balance Queries
+Real-time balance calculations across different currencies:
+
+<table>
+  <tr>
+    <td width="50%">
+      <b>Restaurant Balance (PEN)</b><br>
+      <img src="docs/screenshots/04-get-balance-simple.png" alt="Balance in PEN" width="100%">
+    </td>
+    <td width="50%">
+      <b>Restaurant Balance (USD)</b><br>
+      <img src="docs/screenshots/05-get-balance-multiple-currencies.png" alt="Balance in USD" width="100%">
+    </td>
+  </tr>
+</table>
+
+### Batch Event Processing
+Successfully processed 70 events with **100% success rate** (no duplicates, no failures):
+
+![Event Loader Success](docs/screenshots/06-event-loader-success.png)
+
+### Infrastructure & Health Checks
+
+<table>
+  <tr>
+    <td width="33%">
+      <b>Health Check Endpoint</b><br>
+      <img src="docs/screenshots/07-health-check.png" alt="Health check" width="100%">
+    </td>
+    <td width="33%">
+      <b>Docker Containers</b><br>
+      <img src="docs/screenshots/08-docker-containers-running.png" alt="Docker running" width="100%">
+    </td>
+    <td width="33%">
+      <b>Uvicorn Server Logs</b><br>
+      <img src="docs/screenshots/09-uvicorn-running.png" alt="Uvicorn logs" width="100%">
+    </td>
+  </tr>
+</table>
+
+> 💡 **Why Screenshots Matter**: These demonstrate not just code quality, but operational excellence - the ability to deliver working software, not just theoretical solutions.
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
